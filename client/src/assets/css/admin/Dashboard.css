@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+:root {
+  --primary-color: #6255f0;
+  --secondary-color: black;
+  --third-color: #e4e9f7;
+  --fourth-color: white;
+}
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 78px;
+  background: var(--primary-color);
+  padding: 6px 14px;
+  z-index: 99;
+  transition: all 0.5s ease;
+}
+.sidebar.open {
+  width: 250px;
+}
+.sidebar .logo-details {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.sidebar .logo-details .icon {
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar .logo-details .logo_name {
+  color: #fff;
+  font-size: 20px;
+  font-weight: 600;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .logo_name {
+  opacity: 1;
+}
+.sidebar .logo-details #btn {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  font-size: 22px;
+  transition: all 0.4s ease;
+  font-size: 23px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+.sidebar.open .logo-details #btn {
+  text-align: right;
+}
+.sidebar i {
+  color: #fff;
+  height: 60px;
+  min-width: 50px;
+  font-size: 28px;
+  text-align: center;
+  line-height: 60px;
+}
+.sidebar .nav-list {
+  margin-top: 20px;
+  height: 100%;
+}
+.sidebar li {
+  position: relative;
+  margin: 8px 0;
+  list-style: none;
+  border-radius: 8px;
+}
+.admin_sidebar_active_li {
+  background-color: var(--secondary-color);
+}
+.sidebar li a {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  border-radius: 12px;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.sidebar li:hover {
+  transition: all 0.5s ease;
+  background: var(--secondary-color);
+}
+.sidebar li a .links_name {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.4s;
+}
+.sidebar.open li a .links_name {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sidebar li i {
+  height: 50px;
+  line-height: 50px;
+  font-size: 18px;
+  border-radius: 12px;
+}
+
+.home-section {
+  position: relative;
+  background: var(--third-color);
+  min-height: 100vh;
+  top: 0;
+  left: 78px;
+  width: calc(100% - 78px);
+  transition: all 0.5s ease;
+  z-index: 2;
+}
+
+.sidebar.open ~ .home-section {
+  left: 250px;
+  width: calc(100% - 250px);
+}
+.admin_page_top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0px 18px;
+}
+.admin_page_top p i,
+span {
+  font-size: 15px;
+  margin-right: 4px;
+}
+.admin_page_header {
+  font-size: 30px;
+  font-weight: 500;
+}
+.dahboard_card_section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding: 0px 18px;
+}
+.dahboard_card {
+  width: 220px;
+  text-align: center;
+  background-color: var(--fourth-color);
+  border-radius: 7px;
+  height: 100px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+/* admin header css */
+.admin_header {
+  background-color: var(--primary-color);
+  padding: 15px 18px;
+  border-radius: 0px 0px 0px 15px;
+  margin-bottom: 20px;
+}
+.admin_header div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.admin_header form {
+  position: relative;
+  width: 20rem;
+  background: var(--secondary-color);
+  border-radius: 0.7rem;
+}
+.admin_header form input,
+button {
+  height: 2rem;
+  border: 0;
+  color: #2f2f2f;
+}
+.admin_header form input[type="text"] {
+  outline: 0;
+  width: 100%;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
+  appearance: none;
+  transition: all 0.3s cubic-bezier(0, 0, 0.43, 1.49);
+  transition-property: width, border-radius;
+  z-index: 1;
+  position: relative;
+}
+.admin_header form button {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 3rem;
+  color: var(--fourth-color);
+  font-weight: bold;
+  background: var(--secondary-color);
+  border-radius: 6px;
+  cursor: pointer;
+}
+.admin_header form input:not(:placeholder-shown) {
+  border-radius: 6px;
+  width: calc(100% - 3rem);
+  + button {
+    display: block;
+  }
+}
+.admin_header form label {
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  padding: 0;
+  border: 0;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+.admin_logOut_btn {
+  background-color: transparent;
+  border: 2px solid var(--fourth-color);
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: var(--fourth-color);
+  font-size: 15px;
+}
+.admin_logOut_btn i {
+  margin-right: 3px;
+}
+.admin_logOut_btn:hover {
+  background-color: var(--fourth-color);
+  color: var(--primary-color);
+}
