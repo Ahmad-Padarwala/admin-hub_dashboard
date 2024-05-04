@@ -1,83 +1,59 @@
-import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "../../../assets/css/sidebar.css";
+import { useLocation } from "react-router-dom";
 
-const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const Sidebar = ({ isOpen }) => {
   const location = useLocation();
-
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
-
-  const menuBtnChange = () => {
-    if (isSidebarOpen) {
-      return "fa-solid fa-xmark";
-    } else {
-      return "fa-solid fa-bars";
-    }
-  };
-
   return (
     <>
-      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
-        <div className="logo-details">
-          <i className="fa-solid fa-water icon"></i>
-          <div className="logo_name">AWC</div>
-          <i
-            className={`bx ${menuBtnChange()}`}
-            id="btn"
-            onClick={toggleSidebar}
-          ></i>
-        </div>
-        <ul className="nav-list">
-          <li
-            className={
-              location.pathname === "/dashboard"
-                ? "admin_sidebar_active_li"
-                : ""
-            }
-          >
+      <section id="sidebar" className={isOpen ? "" : "hide"}>
+        <NavLink to="/dashboard" className="brand">
+          <i className="bx bxs-smile"></i>
+          <span className="text">AdminHub</span>
+        </NavLink>
+        <ul className="side-menu top">
+          <li className={location.pathname === "/dashboard" ? "active" : ""}>
             <NavLink to="/dashboard">
-              <i className="fa-solid fa-grip-vertical"></i>
-              <span className="links_name">Dashboard</span>
+              <i className="bx bxs-dashboard"></i>
+              <span className="text">Dashboard</span>
             </NavLink>
           </li>
-          <li
-            className={
-              location.pathname === "/products-category"
-                ? "admin_sidebar_active_li"
-                : ""
-            }
-          >
-            <NavLink to="/products-category">
-              <i className="fa-brands fa-blogger"></i>
-              <span className="links_name">Products Category</span>
+          <li className={location.pathname === "/dashboard1" ? "active" : ""}>
+            <NavLink to="/dashboard">
+              <i className="bx bxs-shopping-bag-alt"></i>
+              <span className="text">Product</span>
             </NavLink>
           </li>
-          <li
-            className={
-              location.pathname === "/blog-category"
-                ? "admin_sidebar_active_li"
-                : ""
-            }
-          >
-            <NavLink to="/blog-category">
-              <i className="fa-brands fa-blogger"></i>
-              <span className="links_name">Blog Category</span>
+          <li className={location.pathname === "/dashboard2" ? "active" : ""}>
+            <NavLink to="/dashboard">
+              <i className="bx bxs-shopping-bag-alt"></i>
+              <span className="text">Product</span>
             </NavLink>
           </li>
-          <li
-            className={
-              location.pathname === "/blogs" ? "admin_sidebar_active_li" : ""
-            }
-          >
-            <NavLink to="/blogs">
-              <i className="fa-brands fa-blogger"></i>
-              <span className="links_name">Blogs</span>
+          <li className={location.pathname === "/dashboard3" ? "active" : ""}>
+            <NavLink to="/dashboard">
+              <i className="bx bxs-shopping-bag-alt"></i>
+              <span className="text">Product</span>
             </NavLink>
           </li>
         </ul>
-      </div>
+
+        <ul className="side-menu">
+          <li className={location.pathname === "/dashboard4" ? "active" : ""}>
+            <NavLink to="/dashboard">
+              <i className="bx bxs-cog"></i>
+              <span className="text">Settings</span>
+            </NavLink>
+          </li>
+          <li className={location.pathname === "/dashboard5" ? "active" : ""}>
+            <NavLink to="/dashboard" className="logout">
+              <i className="bx bxs-log-out-circle"></i>
+              <span className="text">Logout</span>
+            </NavLink>
+          </li>
+        </ul>
+      </section>
     </>
   );
 };
